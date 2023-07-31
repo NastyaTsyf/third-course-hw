@@ -24,7 +24,6 @@ a {
 }
 
 .app-box {
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -48,12 +47,19 @@ a {
     color: #004980;
 }
 
-.complexity-button-box {
+.complexity-radio-box {
     display: flex;
     gap: 25px;
 }
 
-.complexity-button {
+.complexity-radio-box input[type="radio"] {
+    display: none;
+}
+
+.complexity-radio-box label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 12px;
     width: 98px;
     height: 98px;
@@ -64,6 +70,16 @@ a {
     font-weight: 400;
     font-size: 64px;
     line-height: 72px;
+}
+
+.complexity-radio-box input[type="radio"]:checked+label {
+    box-sizing: border-box;
+    border: 3px solid #7AC100;
+}
+
+.complexity-radio-box label:hover {
+    box-sizing: border-box;
+    border: 3px solid #7AC100;
 }
 
 .start-button {
@@ -77,4 +93,9 @@ a {
     font-weight: 400;
     font-size: 24px;
     line-height: 32px;
+}
+
+.start-button:hover {
+    box-sizing: border-box;
+    border: 3px solid #0080C1;
 }
