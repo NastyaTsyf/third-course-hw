@@ -1,8 +1,8 @@
 const appElement = document.getElementById("app");
 
-const globalState = []
+let globalState = []
 
-const renderChooseFormPage = () =>{
+const renderChooseFormPage = (element) =>{
     const chooseFormHtml = `<form class="choose-form">
     <h1 class="title">Выбери <br> сложность</h1>
     <div class="complexity-radio-box">
@@ -18,11 +18,45 @@ const renderChooseFormPage = () =>{
     </div>
     </form>
     `
-    appElement.innerHTML = chooseFormHtml;
+    element.innerHTML = chooseFormHtml;
 
-    
+    const complexityRadioElements = document.querySelectorAll(".complexity-radio");
+    let complexityNumber = "";
+
+    for (const complexityRadioElement of complexityRadioElements) {
+        complexityRadioElement.addEventListener("click", function(isit) {
+            the_class = isit.target.className;
+            the_id = isit.target.id;
+            complexityNumber = document.querySelector("#"+the_id ).value;
+            return complexityNumber;
+            //console.log(complexityNumber)
+        });
+    }
+
+    console.log(complexityNumber);
+
+    const chooseForm = document.querySelector(".choose-form")
+
+    chooseForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        if (!complexityNumber) {
+            alert("Сложность не выбрана")
+        } else {
+            globalState = [{
+                complexity: complexityNumber,
+            }];
+            console.log(globalState);
+            renderPlayingField(element);
+        }
+    })
+
 };
 
-renderChooseFormPage();
+renderChooseFormPage(appElement);
+
+const renderPlayingField = (element) =>{
+    const playingFieldHtml = `<p>Здесь будет игровое поле</p>`;
+    element.innerHTML = playingFieldHtml;
+}
 
 
