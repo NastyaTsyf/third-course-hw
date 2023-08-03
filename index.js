@@ -1,6 +1,6 @@
 const appElement = document.getElementById("app");
 
-let globalState = []
+let globalState = {};
 
 const renderChooseFormPage = (element) =>{
     const chooseFormHtml = `<form class="choose-form">
@@ -42,11 +42,11 @@ const renderChooseFormPage = (element) =>{
         if (!complexityNumber) {
             alert("Сложность не выбрана")
         } else {
-            globalState = [{
+            globalState = {
                 complexity: complexityNumber,
-            }];
-            console.log(globalState);
-            renderPlayingField(element);
+            };
+            console.log(globalState.complexity);
+            renderPlayingField(element, globalState.complexity);
         }
     })
 
@@ -54,8 +54,10 @@ const renderChooseFormPage = (element) =>{
 
 renderChooseFormPage(appElement);
 
-const renderPlayingField = (element) =>{
-    const playingFieldHtml = `<p>Здесь будет игровое поле</p>`;
+const renderPlayingField = (element, number) =>{
+    const playingFieldHtml = `
+    <h2>Выбран уровень сложности ${number}</h2>
+    <div>Здесь будет игровое поле</div>`;
     element.innerHTML = playingFieldHtml;
 }
 
