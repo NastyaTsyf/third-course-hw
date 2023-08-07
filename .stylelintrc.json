@@ -2,7 +2,7 @@
     "extends": ["stylelint-config-standard", "stylelint-prettier/recommended"],
     "plugins": ["stylelint-prettier"],
     "rules": {
-      "prettier/prettier": ["error", { "endOfLine":"auto" }],
+      "prettier/prettier": null,
       "font-family-no-missing-generic-family-keyword": [
         true,
         {

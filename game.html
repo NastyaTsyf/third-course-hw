@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div class="card">
+    <div class="rank header-rank">
+        <div class="rank-box">
+            <p class="rank-text">A</p>
+            <svg width="7" height="7" viewBox="0 0 7 7"       fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3.37476 0L6.09331 3.3832L3.37476 6.74951L0.656203 3.3832L3.37476 0Z" fill="#FF4545"/>
+            </svg>
+        </div>
+    </div>
+    <div class="suit">
+        <svg width="22" height="26" viewBox="0 0 22 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11 0.000244141L21.2705 12.7817L11 25.4994L0.729503 12.7817L11 0.000244141Z" fill="#FF4545"/>
+            </svg>            
+    </div>
+    <div class="rank footer-rank">
+        <div class="rank-box">
+                <svg width="7" height="7" viewBox="0 0 7 7"       fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3.37476 0L6.09331 3.3832L3.37476 6.74951L0.656203 3.3832L3.37476 0Z" fill="#FF4545"/>
+                </svg>
+            <p class="rank-text footer-rank-text">A</p>
+        </div>
+
+    </div>
+    <style>
+        * {
+        margin: 0;
+        padding: 0;
+        }
+
+        @font-face {
+        font-family: StratosSkyeng;
+        src: url("fonts/stratosskyengweb-regular.woff") format("woff");
+        font-style: normal;
+        font-weight: normal;
+        }
+
+        body {
+        font-family: StratosSkyeng, sans-serif;
+        background-color: #004980;
+        padding: 22px;
+        display: flex;
+        justify-content: center;
+        }
+
+        .card {
+            background-color: #fff;
+            width: 95px;
+            height: 133px;
+            flex-shrink: 0;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            padding: 6px;
+            box-sizing: border-box;
+            justify-content: space-between;
+        }
+
+        .rank-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .rank-text {
+            color: #000;
+            font-variant-numeric: lining-nums proportional-nums;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 32px; 
+        }
+
+        .suit {
+            display: flex;
+            justify-content: center;
+        }
+
+        .rank {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .header-rank {
+            align-items: flex-start;
+        }
+
+        .footer-rank {
+            align-items: flex-end;
+        }
+
+        .footer-rank-text {
+            transform: rotate(180deg);
+        }
+
+    </style>
+</div>
+</body>
+</html>

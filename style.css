@@ -10,10 +10,12 @@
     font-weight: normal;
 }
 
-
 body {
     font-family: StratosSkyeng, sans-serif;
     background-color: #004980;
+    padding: 22px;
+    display: flex;
+    justify-content: center;
 }
 
 a {
@@ -22,21 +24,22 @@ a {
 
 .app-box {
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
 }
 
 .choose-form {
     margin-top: 158px;
     margin-bottom: 158px;
-    background-color: #C2F5FF;
+    background-color: #c2f5ff;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 49px;
-    padding: 50px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-left: 70px;
+    padding-right: 70px;
     border-radius: 12px;
+    max-width: 340px;
 }
 
 .title {
@@ -46,7 +49,9 @@ a {
 
 .complexity-radio-box {
     display: flex;
-    gap: 25px;
+    gap: 26px;
+    padding-top: 48px;
+    padding-bottom: 67px;
 }
 
 .complexity-radio-box input[type="radio"] {
@@ -58,29 +63,30 @@ a {
     justify-content: center;
     align-items: center;
     border-radius: 12px;
-    width: 98px;
+    width: 96px;
     height: 98px;
     border: none;
-    background-color: #FFF;
-    color: #0080C1;
+    background-color: #fff;
     font-family: StratosSkyeng, sans-serif;
     font-weight: 400;
     font-size: 64px;
     line-height: 72px;
+    color: var(--blue-100, #0080c1);
+    font-style: normal;
+    line-height: 72px;
 }
 
-.complexity-radio-box input[type="radio"]:checked+label {
+.complexity-radio-box input[type="radio"]:checked + label {
     box-sizing: border-box;
-    border: 3px solid #7AC100;
+    border: 3px solid #7ac100;
 }
 
-
-.start-button {
+.button {
     width: 246px;
-    height: 50px;
+    height: 48px;
     border-radius: 12px;
-    background-color: #7AC100;
-    color: #FFF;
+    background-color: #7ac100;
+    color: #fff;
     border: none;
     font-family: StratosSkyeng, sans-serif;
     font-weight: 400;
@@ -90,5 +96,101 @@ a {
 
 .start-button:hover {
     box-sizing: border-box;
-    border: 3px solid #0080C1;
+    border: 3px solid #0080c1;
+}
+
+/* страница с картами */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 35px;
+}
+
+.timer {
+    display: flex;
+    flex-direction: column;
+}
+
+.units {
+    display: flex;
+    justify-content: flex-end;
+    gap: 58px;
+}
+
+.unit-item {
+    display: block;
+    color: #FFF;
+    font-variant-numeric: lining-nums proportional-nums;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px;
+}
+
+.time {
+    color: #FFF;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 72px;
+}
+
+.playing-field {
+    display: grid;
+    column-gap: 15px;
+    row-gap: 15px;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+}
+
+.item {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+
+/*карта*/
+
+.card {
+    background-color: #fff;
+    width: 95px;
+    height: 133px;
+    flex-shrink: 0;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    padding: 6px;
+    box-sizing: border-box;
+    justify-content: space-between;
+}
+
+.rank-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rank-text {
+    color: #000;
+    font-variant-numeric: lining-nums proportional-nums;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px; 
+}
+
+.suit {
+    display: flex;
+    justify-content: center;
+}
+
+.rank {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    align-items: flex-start;
+}
+
+.footer-rank {
+    transform: rotate(180deg);
 }
