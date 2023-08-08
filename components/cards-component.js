@@ -271,7 +271,7 @@ export const cards = [
     {
         name: 'Шестерка бубнов',
         suit: 'Diamonds',
-        rank: '7',
+        rank: '6',
         isClicked: false,
         suitImgBig: suitSigns.diamondsBig,
         suitImgLittle: suitSigns.diamondsLittle,
