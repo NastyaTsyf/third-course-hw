@@ -48,7 +48,7 @@ renderApp(appElement)
 
 const renderPlayingField = (element, number) => {
     const cardsHtml = cards.map((card) =>{
-        if (card.isClicked == true) {
+        if (card.isClicked === true) {
             return card.backImg
         } else {
             return`<div class="card item">
