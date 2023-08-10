@@ -1,7 +1,6 @@
 import { cards } from "./components/cards-component.js"
+import { getRandomCards } from "./components/get-random-cards-component.js"
 import { renderPlayingField } from "./components/render-playing-field-component.js"
-
-
 const appElement = document.getElementById("app")
 let globalState = {}
 const renderApp = (element) => {
@@ -28,10 +27,8 @@ const renderApp = (element) => {
             const theId = isIt.target.id
             complexityNumber = document.querySelector("#" + theId).value
             return complexityNumber
-            //console.log(complexityNumber)
         })
     }
-    console.log(complexityNumber)
     const chooseForm = document.querySelector(".choose-form")
     chooseForm.addEventListener("submit", (event) => {
         event.preventDefault()
@@ -42,7 +39,9 @@ const renderApp = (element) => {
                 complexity: complexityNumber,
             }
             console.log(globalState.complexity)
-            renderPlayingField(element, cards, globalState.complexity)
+            const randomCards = getRandomCards(cards, globalState.complexity)
+            console.log(randomCards)
+            renderPlayingField(element, randomCards, globalState.complexity )
         }
     })
 }

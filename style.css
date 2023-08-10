@@ -140,14 +140,19 @@ a {
     grid-template-rows: repeat(5, 1fr);
 }
 
-.item {
-    grid-column: span 1;
-    grid-row: span 1;
-}
-
 /* карта */
 
+.back-of-card{
+    background-image: url(image/back-of-a-card.jpg);
+} 
+
+.invisible{
+    display: none;
+}
+
 .card {
+    grid-column: span 1;
+    grid-row: span 1;
     background-color: #fff;
     width: 95px;
     height: 133px;
@@ -157,7 +162,7 @@ a {
     flex-direction: column;
     padding: 6px;
     box-sizing: border-box;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .rank-box {
@@ -190,3 +195,5 @@ a {
 .footer-rank {
     transform: rotate(180deg);
 }
+
+
