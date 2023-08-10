@@ -143,7 +143,7 @@ a {
 /* карта */
 
 .back-of-card{
-    background-image: url(image/back-of-a-card.jpg);
+    background-image: url("image/back-of-a-card.jpg");
 } 
 
 .invisible{
