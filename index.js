@@ -1,6 +1,8 @@
 import { cards } from "./components/cards-component.js"
 import { getRandomCards } from "./components/get-random-cards-component.js"
-import { renderPlayingField } from "./components/render-playing-field-component.js"
+import { renderPlayingFieldStart } from "./components/render-playing-field-component.js"
+import { initGame } from "./components/render-playing-field-component.js"
+
 const appElement = document.getElementById("app")
 let globalState = {}
 const renderApp = (element) => {
@@ -41,7 +43,9 @@ const renderApp = (element) => {
             console.log(globalState.complexity)
             const randomCards = getRandomCards(cards, globalState.complexity)
             console.log(randomCards)
-            renderPlayingField(element, randomCards, globalState.complexity )
+            renderPlayingFieldStart( randomCards, element, true)
+            setTimeout(renderPlayingFieldStart, 5000, randomCards, element,  false)
+            setTimeout(initGame, 5000, element, randomCards)
         }
     })
 }

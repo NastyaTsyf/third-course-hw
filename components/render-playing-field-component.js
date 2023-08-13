@@ -1,7 +1,8 @@
 
-export function renderPlayingField (element, array, complexity) {
+export function renderPlayingField (array, element) {
     const cardsHtml = array.map((card, index) =>{
-            return`
+        
+        return`
             <div class="card ${card.isClicked ? '' : 'back-of-card'}"  data-id="${card.name}" data-index="${index}">
                 <div class="${card.isClicked ? '' : 'invisible'}">
                     <div class="rank header-rank">
@@ -22,8 +23,8 @@ export function renderPlayingField (element, array, complexity) {
                 </div>
             </div>`
     }).join('');
+
     const playingFieldHtml = `
-    <!--<h2>Выбран уровень сложности ${complexity}</h2>-->
     <div class="header">
         <div class="timer">
             <div class="units">
@@ -38,49 +39,62 @@ export function renderPlayingField (element, array, complexity) {
     ${cardsHtml}
     </div>`
     element.innerHTML = playingFieldHtml
+}
 
-    let flippedСards = [];
+export function renderPlayingFieldStart (array, element, state) {
+    renderPlayingField (array, element)
+    const cardElements = document.querySelectorAll(".card")
+    for (const cardElement of cardElements){
+        const index = cardElement.dataset.index;
+        array[index].isClicked = state}
+    renderPlayingField (array, element)
+}    
 
-    const initGame = () => {
-        const cardElements = document.querySelectorAll(".card")
 
+//let flippedСards = [];
+export function initGame (element, array)  {
+    //renderPlayingFieldStart (array, element, state)
+    renderPlayingField (array, element)
+    const cardElements = document.querySelectorAll(".card")
         for (const cardElement of cardElements){
             cardElement.addEventListener('click', () => {
+                const index = cardElement.dataset.index;
                 const flipTheCard = () => {
-                    const index = cardElement.dataset.index;
                     array[index].isClicked = true
-                    renderPlayingField (element, array, complexity)
+                    initGame (element, array)
                 }
+                flipTheCard()
 
+                //const getCardId = () => {
+                //} 
 
-                const getCardId = () => {
-                        //for (let i = 0; i < 2; i++) {
-                            flippedСards.push(cardElement.dataset.id);
-                            return flippedСards
-                        //}
-                } 
-
-                getCardId ()
-
-                if (flippedСards.length < 2) {
-                   getCardId()
-                    if (flippedСards.length === 2 && flippedСards[0] === flippedСards[1]) {
-                        flipTheCard ()
-                        console.log(flippedСards)
-                    } else if (flippedСards.length === 2 && flippedСards[0] !== flippedСards[1]) {
-                        alert ("Вы проиграли")
-                        console.log(flippedСards)
-                    }
-
-                } else {
-                    renderPlayingField (element, array, complexity)
-                }
+                //if (flippedСards.length <= 2) {
+                //    getCardId()
+//
+                //    if (flippedСards.length === 2 && flippedСards[0] === flippedСards[1]) {
+//
+                //        renderPlayingField (element, array, complexity)
+                //        console.log(flippedСards)
+                //        
+                //    } else if (flippedСards.length === 2 && flippedСards[0] !== flippedСards[1]) {
+                //        renderPlayingField (element, array, complexity)
+                //        alert ("Вы проиграли")
+                //        console.log(flippedСards)
+                //    } else {
+                //        renderPlayingField (element, array, complexity)
+                //        console.log(flippedСards)
+                //    }
+//
+                //} else {
+                //    getCardId()
+                //    renderPlayingField (element, array, complexity)
+//
+                //}
             })
             
         }
         
     }
-    initGame ()
 
 
-}
+
