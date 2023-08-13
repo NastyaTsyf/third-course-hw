@@ -27,7 +27,7 @@ a {
     flex-direction: column;
 }
 
-.choose-form {
+.container {
     margin-top: 158px;
     margin-bottom: 158px;
     background-color: #c2f5ff;
@@ -36,7 +36,7 @@ a {
     align-items: center;
     padding: 50px 70px;
     border-radius: 12px;
-    max-width: 340px;
+    max-width: 480px;
 }
 
 .title {

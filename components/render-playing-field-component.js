@@ -50,10 +50,9 @@ export function renderPlayingFieldStart (array, element, state) {
     renderPlayingField (array, element)
 }    
 
-
-//let flippedСards = [];
+let flippedСards = [];
 export function initGame (element, array)  {
-    //renderPlayingFieldStart (array, element, state)
+    //flippedСards = [];
     renderPlayingField (array, element)
     const cardElements = document.querySelectorAll(".card")
         for (const cardElement of cardElements){
@@ -61,35 +60,27 @@ export function initGame (element, array)  {
                 const index = cardElement.dataset.index;
                 const flipTheCard = () => {
                     array[index].isClicked = true
-                    initGame (element, array)
+
+                    const CompareACoupleOfCards = () => {
+                        if (flippedСards.length <= 1) {
+                            flippedСards.push(array[index].name);
+                            console.log(flippedСards)
+                            initGame (element, array)
+                            if ((flippedСards.length === 2 && flippedСards[0] !== flippedСards[1])) {
+                                //globalState.status = "Результат"
+                                alert("вы проиграли")
+                            }
+                        }  else {
+                            flippedСards = []
+                            CompareACoupleOfCards ()
+                        }
+                    }
+                    CompareACoupleOfCards ()
+
+                 initGame (element, array)
                 }
                 flipTheCard()
 
-                //const getCardId = () => {
-                //} 
-
-                //if (flippedСards.length <= 2) {
-                //    getCardId()
-//
-                //    if (flippedСards.length === 2 && flippedСards[0] === flippedСards[1]) {
-//
-                //        renderPlayingField (element, array, complexity)
-                //        console.log(flippedСards)
-                //        
-                //    } else if (flippedСards.length === 2 && flippedСards[0] !== flippedСards[1]) {
-                //        renderPlayingField (element, array, complexity)
-                //        alert ("Вы проиграли")
-                //        console.log(flippedСards)
-                //    } else {
-                //        renderPlayingField (element, array, complexity)
-                //        console.log(flippedСards)
-                //    }
-//
-                //} else {
-                //    getCardId()
-                //    renderPlayingField (element, array, complexity)
-//
-                //}
             })
             
         }
