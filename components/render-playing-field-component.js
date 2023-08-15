@@ -51,41 +51,61 @@ export function renderPlayingFieldStart (array, element, state) {
 }    
 
 let flippedСards = [];
-export function initGame (element, array)  {
-    //flippedСards = [];
+
+export function initGame (element, array, status, selectedCards, result, generatedCards)  {
     renderPlayingField (array, element)
+    
     const cardElements = document.querySelectorAll(".card")
-        for (const cardElement of cardElements){
+        for (const cardElement of cardElements){        
             cardElement.addEventListener('click', () => {
                 const index = cardElement.dataset.index;
                 const flipTheCard = () => {
                     array[index].isClicked = true
-
                     const CompareACoupleOfCards = () => {
-                        if (flippedСards.length <= 1) {
+
+                        if (
+                            selectedCards.length <
+                           (generatedCards.length - 1)
+                        ) {
+                            if (flippedСards.length <= 1) {
                             flippedСards.push(array[index].name);
                             console.log(flippedСards)
-                            initGame (element, array)
+                            selectedCards.push(array[index].name)
+                            
+                            
                             if ((flippedСards.length === 2 && flippedСards[0] !== flippedСards[1])) {
-                                //globalState.status = "Результат"
-                                alert("вы проиграли")
+                                status = "Peзультат"
+                                result = "loss";
+                                console.log(status)
+                                console.log(result)
+                                alert("Вы проиграли")
+                                return 
                             }
                         }  else {
                             flippedСards = []
                             CompareACoupleOfCards ()
                         }
+                            
+                        } else {
+                            status = "Peзультат"
+                            result = "win"
+                            console.log(status)
+                            console.log(result)
+                            alert("вы выиграли")
+                            return 
+                        }
+                    
                     }
                     CompareACoupleOfCards ()
 
-                 initGame (element, array)
+                 initGame (element, array, status, selectedCards, result, generatedCards)
                 }
                 flipTheCard()
 
             })
-            
         }
-        
-    }
+}
+
 
 
 

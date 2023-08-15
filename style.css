@@ -110,8 +110,9 @@ a {
 
 .units {
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
     gap: 58px;
+    padding-left: 45px;
 }
 
 .unit-item {
@@ -130,6 +131,8 @@ a {
     font-style: normal;
     font-weight: 400;
     line-height: 72px;
+    background: transparent;
+    border: none;
 }
 
 .playing-field {

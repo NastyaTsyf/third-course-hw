@@ -7,12 +7,13 @@ const appElement = document.getElementById("app")
 
 let globalState = {
     status: "Выбор сложности",
+    selectedCards: [],
+    result: "",
 }
 
 const renderApp = (element) => {
-
     if (globalState.status === "Выбор сложности") {
-            const chooseFormHtml = `<form class="container" id="choose-form">
+        const chooseFormHtml = `<form class="container" id="choose-form">
         <h1 class="title">Выбери <br> сложность</h1>
         <div class="complexity-radio-box">
             <input type="radio" id="radio1" value="1" class="complexity-radio" name="complexity">
@@ -45,39 +46,43 @@ const renderApp = (element) => {
             } else {
                 globalState.status = "Игра"
                 globalState.complexity = complexityNumber
-                renderApp (appElement)
-            }}
-            )
-    
-    } else if (globalState.status === "Игра"){
+                renderApp(appElement)
+            }
+        })
+    } else if (globalState.status === "Игра") {
+
         const randomCards = getRandomCards(cards, globalState.complexity)
         globalState.generatedCards = randomCards
+        renderPlayingFieldStart(randomCards, element, true, globalState)
+        setTimeout(
+            renderPlayingFieldStart,
+            5000,
+            randomCards,
+            element,
+            false,
+            globalState,
+        )
+        setTimeout(
+            initGame,
+            5000,
+            element,
+            randomCards,
+            globalState.status,
+            globalState.selectedCards,
+            globalState.result,
+            globalState.generatedCards
+        )
+        console.log(globalState.status)
+
+        
+                
+        //renderApp(appElement)
         console.log(globalState)
-        renderPlayingFieldStart( randomCards,element, true, globalState)
-        setTimeout(renderPlayingFieldStart, 5000,randomCards, element,  false, globalState)
-        setTimeout(initGame, 5000, element,randomCards, globalState)
-        //renderApp (appElement)
-    } else {
+
+    } else if (globalState.status === "Результат") {
         alert("заглушка результата")
         //renderApp (appElement)
     }
 }
 
-renderApp (appElement)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+renderApp(appElement)
