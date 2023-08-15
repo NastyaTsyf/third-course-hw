@@ -5,7 +5,7 @@
 
 @font-face {
     font-family: StratosSkyeng;
-    src: url("fonts/stratosskyengweb-regular.woff") format("woff");
+    src: url("static/fonts/stratosskyengweb-regular.woff") format("woff");
     font-style: normal;
     font-weight: normal;
 }
@@ -146,7 +146,7 @@ a {
 /* карта */
 
 .back-of-card{
-    background-image: url("image/back-of-a-card.jpg");
+    background-image: url("static/image/back-of-a-card.jpg");
 } 
 
 .invisible{

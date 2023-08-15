@@ -1,3 +1,4 @@
+import '/style.css';
 import { cards } from "./components/cards-component.js"
 import { getRandomCards } from "./components/get-random-cards-component.js"
 import { renderPlayingFieldStart } from "./components/render-playing-field-component.js"
