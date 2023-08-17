@@ -5,6 +5,7 @@ import { renderPlayingFieldStart } from "./components/render-playing-field-compo
 import { initGame } from "./components/render-playing-field-component.js"
 
 const appElement = document.getElementById("app")
+console.log(appElement)
 
 let globalState = {
     status: "Выбор сложности",
