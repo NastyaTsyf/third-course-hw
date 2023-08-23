@@ -25,12 +25,6 @@ const suitSigns = {
     </svg>`
 }
 
-const backOfACard = `
-<div class="item">
-    <img src="image/back-of-a-card.jpg" alt="рубашка">
-</div>
-`
-
 export const cards = [
     {
         name: 'Туз пик',
@@ -39,7 +33,6 @@ export const cards = [
         isClicked: false,
         suitImgBig: suitSigns.spadesBig,
         suitImgLittle: suitSigns.spadesLittle,
-        backImg: backOfACard,
     }, 
     {
         name: 'Король пик',
@@ -48,7 +41,6 @@ export const cards = [
         isClicked: false,
         suitImgBig: suitSigns.spadesBig,
         suitImgLittle: suitSigns.spadesLittle,
-        backImg: backOfACard,
     },
     {
         name: 'Дама пик',
@@ -57,7 +49,6 @@ export const cards = [
         isClicked: false,
         suitImgBig: suitSigns.spadesBig,
         suitImgLittle: suitSigns.spadesLittle,
-        backImg: backOfACard,
     },
     {
         name: 'Валет пик',
@@ -66,7 +57,6 @@ export const cards = [
         isClicked: false,
         suitImgBig: suitSigns.spadesBig,
         suitImgLittle: suitSigns.spadesLittle,
-        backImg: backOfACard,
     },
     {
         name: 'Десятка пик',
@@ -75,7 +65,6 @@ export const cards = [
         isClicked: false,
         suitImgBig: suitSigns.spadesBig,
         suitImgLittle: suitSigns.spadesLittle,
-        backImg: backOfACard,
     },
     {
         name: 'Девятка пик',
@@ -84,7 +73,6 @@ export const cards = [
         isClicked: false,
         suitImgBig: suitSigns.spadesBig,
         suitImgLittle: suitSigns.spadesLittle,
-        backImg: backOfACard,
     },
     {
         name: 'Восьмерка пик',
@@ -93,7 +81,6 @@ export const cards = [
         isClicked: false,
         suitImgBig: suitSigns.spadesBig,
         suitImgLittle: suitSigns.spadesLittle,
-        backImg: backOfACard,
     },
     {
         name: 'Семерка пик',
@@ -102,7 +89,6 @@ export const cards = [
         isClicked: false,
         suitImgBig: suitSigns.spadesBig,
         suitImgLittle: suitSigns.spadesLittle,
-        backImg: backOfACard,
     },
     {
         name: 'Шестерка пик',
@@ -111,7 +97,6 @@ export const cards = [
         isClicked: false,
         suitImgBig: suitSigns.spadesBig,
         suitImgLittle: suitSigns.spadesLittle,
-        backImg: backOfACard,
     },
 
     {
@@ -121,7 +106,6 @@ export const cards = [
         isClicked: false,
         suitImgBig: suitSigns.heartsBig,
         suitImgLittle: suitSigns.heartsLittle,
-        backImg: backOfACard,
     }, 
     {
         name: 'Король червей',
@@ -130,7 +114,6 @@ export const cards = [
         isClicked: false,
         suitImgBig: suitSigns.heartsBig,
         suitImgLittle: suitSigns.heartsLittle,
-        backImg: backOfACard,
     },
     {
         name: 'Дама червей',
@@ -139,7 +122,6 @@ export const cards = [
         isClicked: false,
         suitImgBig: suitSigns.heartsBig,
         suitImgLittle: suitSigns.heartsLittle,
-        backImg: backOfACard,
     },
     {
         name: 'Валет червей',
@@ -148,7 +130,6 @@ export const cards = [
         isClicked: false,
         suitImgBig: suitSigns.heartsBig,
         suitImgLittle: suitSigns.heartsLittle,
-        backImg: backOfACard,
     },
     {
         name: 'Десятка червей',
@@ -157,7 +138,6 @@ export const cards = [
         isClicked: false,
         suitImgBig: suitSigns.heartsBig,
         suitImgLittle: suitSigns.heartsLittle,
-        backImg: backOfACard,
     },
     {
         name: 'Девятка червей',
@@ -166,7 +146,6 @@ export const cards = [
         isClicked: false,
         suitImgBig: suitSigns.heartsBig,
         suitImgLittle: suitSigns.heartsLittle,
-        backImg: backOfACard,
     },
     {
         name: 'Восьмерка червей',
@@ -175,7 +154,6 @@ export const cards = [
         isClicked: false,
         suitImgBig: suitSigns.heartsBig,
         suitImgLittle: suitSigns.heartsLittle,
-        backImg: backOfACard,
     },
     {
         name: 'Семерка червей',
@@ -184,7 +162,6 @@ export const cards = [
         isClicked: false,
         suitImgBig: suitSigns.heartsBig,
         suitImgLittle: suitSigns.heartsLittle,
-        backImg: backOfACard,
     },
     {
         name: 'Шестерка червей',
@@ -193,7 +170,6 @@ export const cards = [
         isClicked: false,
         suitImgBig: suitSigns.heartsBig,
         suitImgLittle: suitSigns.heartsLittle,
-        backImg: backOfACard,
     },
 
     {
@@ -203,7 +179,6 @@ export const cards = [
         isClicked: false,
         suitImgBig: suitSigns.diamondsBig,
         suitImgLittle: suitSigns.diamondsLittle,
-        backImg: backOfACard,
     }, 
     {
         name: 'Король бубнов',
@@ -212,7 +187,6 @@ export const cards = [
         isClicked: false,
         suitImgBig: suitSigns.diamondsBig,
         suitImgLittle: suitSigns.diamondsLittle,
-        backImg: backOfACard,
     },
     {
         name: 'Дама бубнов',
@@ -221,7 +195,6 @@ export const cards = [
         isClicked: false,
         suitImgBig: suitSigns.diamondsBig,
         suitImgLittle: suitSigns.diamondsLittle,
-        backImg: backOfACard,
     },
     {
         name: 'Валет бубнов',
@@ -230,7 +203,6 @@ export const cards = [
         isClicked: false,
         suitImgBig: suitSigns.diamondsBig,
         suitImgLittle: suitSigns.diamondsLittle,
-        backImg: backOfACard,
     },
     {
         name: 'Десятка бубнов',
@@ -239,7 +211,6 @@ export const cards = [
         isClicked: false,
         suitImgBig: suitSigns.diamondsBig,
         suitImgLittle: suitSigns.diamondsLittle,
-        backImg: backOfACard,
     },
     {
         name: 'Девятка бубнов',
@@ -248,7 +219,6 @@ export const cards = [
         isClicked: false,
         suitImgBig: suitSigns.diamondsBig,
         suitImgLittle: suitSigns.diamondsLittle,
-        backImg: backOfACard,
     },
     {
         name: 'Восьмерка бубнов',
@@ -257,7 +227,6 @@ export const cards = [
         isClicked: false,
         suitImgBig: suitSigns.diamondsBig,
         suitImgLittle: suitSigns.diamondsLittle,
-        backImg: backOfACard,
     },
     {
         name: 'Семерка бубнов',
@@ -266,16 +235,14 @@ export const cards = [
         isClicked: false,
         suitImgBig: suitSigns.diamondsBig,
         suitImgLittle: suitSigns.diamondsLittle,
-        backImg: backOfACard,
     },
     {
         name: 'Шестерка бубнов',
         suit: 'Diamonds',
-        rank: '7',
+        rank: '6',
         isClicked: false,
         suitImgBig: suitSigns.diamondsBig,
         suitImgLittle: suitSigns.diamondsLittle,
-        backImg: backOfACard,
     },
 
     {
@@ -285,7 +252,6 @@ export const cards = [
         isClicked: false,
         suitImgBig: suitSigns.clubsBig,
         suitImgLittle: suitSigns.clubsLittle,
-        backImg: backOfACard,
     }, 
     {
         name: 'Король крестов',
@@ -294,7 +260,6 @@ export const cards = [
         isClicked: false,
         suitImgBig: suitSigns.clubsBig,
         suitImgLittle: suitSigns.clubsLittle,
-        backImg: backOfACard,
     },
     {
         name: 'Дама крестов',
@@ -303,7 +268,6 @@ export const cards = [
         isClicked: false,
         suitImgBig: suitSigns.clubsBig,
         suitImgLittle: suitSigns.clubsLittle,
-        backImg: backOfACard,
     },
     {
         name: 'Валет крестов',
@@ -312,7 +276,6 @@ export const cards = [
         isClicked: false,
         suitImgBig: suitSigns.clubsBig,
         suitImgLittle: suitSigns.clubsLittle,
-        backImg: backOfACard,
     },
     {
         name: 'Десятка крестов',
@@ -321,7 +284,6 @@ export const cards = [
         isClicked: false,
         suitImgBig: suitSigns.clubsBig,
         suitImgLittle: suitSigns.clubsLittle,
-        backImg: backOfACard,
     },
     {
         name: 'Девятка крестов',
@@ -330,7 +292,6 @@ export const cards = [
         isClicked: false,
         suitImgBig: suitSigns.clubsBig,
         suitImgLittle: suitSigns.clubsLittle,
-        backImg: backOfACard,
     },
     {
         name: 'Восьмерка крестов',
@@ -339,7 +300,6 @@ export const cards = [
         isClicked: false,
         suitImgBig: suitSigns.clubsBig,
         suitImgLittle: suitSigns.clubsLittle,
-        backImg: backOfACard,
     },
     {
         name: 'Семерка крестов',
@@ -348,7 +308,6 @@ export const cards = [
         isClicked: false,
         suitImgBig: suitSigns.clubsBig,
         suitImgLittle: suitSigns.clubsLittle,
-        backImg: backOfACard,
     },
     {
         name: 'Шестерка крестов',
@@ -357,7 +316,6 @@ export const cards = [
         isClicked: false,
         suitImgBig: suitSigns.clubsBig,
         suitImgLittle: suitSigns.clubsLittle,
-        backImg: backOfACard,
     },
 
 ]
