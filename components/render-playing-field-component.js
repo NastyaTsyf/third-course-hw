@@ -1,4 +1,3 @@
-
 export function renderPlayingField (array, element) {
     const cardsHtml = array.map((card, index) =>{
         
@@ -33,7 +32,7 @@ export function renderPlayingField (array, element) {
             </div>
             <div class="time"><p>00.00</p></div>
         </div>
-        <button class="button">Начать заново</button>
+        <button class="button" id="again-button">Начать заново</button>
     </div>
     <div class="playing-field">
     ${cardsHtml}
@@ -54,7 +53,29 @@ let flippedСards = [];
 
 export function initGame (element, array, status, selectedCards, result, generatedCards)  {
     renderPlayingField (array, element)
-    
+
+    const againButton = document.getElementById("again-button")
+    againButton.addEventListener('click', () => {
+        renderPlayingFieldStart(array, element, true)
+        setTimeout(
+            renderPlayingFieldStart,
+            5000,
+            array,
+            element,
+            false
+        )
+        setTimeout(
+            initGame,
+            5000,
+            element,
+            array,
+            status,
+            selectedCards,
+            result,
+            generatedCards
+        )
+    })
+
     const cardElements = document.querySelectorAll(".card")
         for (const cardElement of cardElements){        
             cardElement.addEventListener('click', () => {
@@ -76,10 +97,8 @@ export function initGame (element, array, status, selectedCards, result, generat
                             if ((flippedСards.length === 2 && flippedСards[0] !== flippedСards[1])) {
                                 status = "Peзультат"
                                 result = "loss";
-                                console.log(status)
-                                console.log(result)
                                 alert("Вы проиграли")
-                                return 
+                                return status, result
                             }
                         }  else {
                             flippedСards = []
@@ -92,7 +111,7 @@ export function initGame (element, array, status, selectedCards, result, generat
                             console.log(status)
                             console.log(result)
                             alert("вы выиграли")
-                            return 
+                            return status, result
                         }
                     
                     }
