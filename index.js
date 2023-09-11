@@ -175,7 +175,7 @@ const renderApp = (element) => {
             <h1 class="finish-header">Вы ${globalState.result === "win" ? "выиграли" : "проиграли"}!</h1>
             <div class="finish-time-box">
                 <p class="time-text">Затраченное время:</p>
-                <p class="time finish-time">01.20</p>
+                <p class="time finish-time">${globalState.time}</p>
             </div>
 
             <div class="start-submit-box">

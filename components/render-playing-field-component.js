@@ -70,7 +70,7 @@ export function initGame (element, array, globalState)  {
                                 
                                 alert("Вы проиграли")
                                 console.log(globalState)
-                                return globalState
+                                
                             }
                         }  else {
                             flippedСards = []
