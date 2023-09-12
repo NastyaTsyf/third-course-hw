@@ -108,7 +108,8 @@ const renderApp = (element) => {
             initGame(
                 element,
                 randomCards,
-                globalState
+                globalState,
+                renderAppWindow
             )
         }
 
@@ -120,7 +121,7 @@ const renderApp = (element) => {
         setTimeout(
             startTimer,
             5000
-           )
+        )
 
         const againButton = document.getElementById("again-button")
         againButton.addEventListener('click', () => {

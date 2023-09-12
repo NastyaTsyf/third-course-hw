@@ -42,7 +42,7 @@ export function renderPlayingFieldStart (array, element, state) {
 
 let flippedСards = [];
 
-export function initGame (element, array, globalState)  {
+export function initGame (element, array, globalState, renderAppWindow)  {
     renderPlayingField (array, element)
 
 
@@ -70,6 +70,7 @@ export function initGame (element, array, globalState)  {
                                 
                                 alert("Вы проиграли")
                                 console.log(globalState)
+                                renderAppWindow()
                                 
                             }
                         }  else {
@@ -88,7 +89,7 @@ export function initGame (element, array, globalState)  {
                     }
                     CompareACoupleOfCards ()
 
-                 initGame (element, array, globalState)
+                 initGame (element, array, globalState, renderAppWindow)
                 }
                 flipTheCard()
             })
