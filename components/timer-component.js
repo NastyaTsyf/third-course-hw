@@ -8,17 +8,10 @@ export function timer(element){
       console.log(element.value)  
    }
 
- }
-
- export function startSekTimer(timerSekId, timer, element){ 
-    timerSekId = setInterval(timer, 1000, element);
- }
-
- export function startMinTimer(timerMinId, timer, element){ 
-   timerMinId = setInterval(timer, 60000, element);
 }
 
- export function stopTimer(timerSekId, timerMinId) { 
+
+export function stopTimer(timerSekId, timerMinId) { 
     clearInterval(timerSekId);
     clearInterval(timerMinId);
  }

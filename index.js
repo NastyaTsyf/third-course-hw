@@ -1,14 +1,14 @@
 import '/style.css';
 import { cards } from "./components/cards-component.js"
 import { getRandomCards } from "./components/get-random-cards-component.js"
-import { renderPlayingFieldStart } from "./components/render-playing-field-component.js"
+import { renderPlayingField, renderPlayingFieldStart } from "./components/render-playing-field-component.js"
 import { initGame } from "./components/render-playing-field-component.js"
-import { startMinTimer, startSekTimer, stopTimer, timer } from "./components/timer-component.js";
+import { stopTimer, timer } from "./components/timer-component.js";
 
 const appElement = document.getElementById("app")
 const appHeaderElement = document.getElementById("header-box")
-const timerSekId = 0;
-const timerMinId = 0;
+let timerSekId = 0;
+let timerMinId = 0;
 
 
 let globalState = {
@@ -64,6 +64,13 @@ const renderApp = (element) => {
                 renderApp(appElement)
             }
         })
+        document.getElementById("header-box").classList.add("invisible");
+        Object.defineProperty(globalState, "selectedCards", {value : []})
+        Object.defineProperty(globalState, "time", {value : ''})
+        Object.defineProperty(globalState, "result", {value : ''})
+        timerSekId = 0;
+        timerMinId = 0;
+
     } else if (globalState.status === "Игра") {
 
         const renderHeader = () => {
@@ -87,16 +94,10 @@ const renderApp = (element) => {
         renderPlayingFieldStart(randomCards, element, true)
 
         const startTimer = () =>{
-            startSekTimer(
-                timerSekId,
-                timer,
-                document.getElementById("timer-sek-element"),
-            )
-            startMinTimer(
-                timerMinId,
-                timer,
-                document.getElementById("timer-min-element"),
-            )
+            timerSekId = setInterval(timer, 1000, document.getElementById("timer-sek-element"));
+
+            timerMinId = setInterval(timer, 60000, document.getElementById("timer-min-element"));
+
         }
         const startGame = () =>{
             renderPlayingFieldStart(
@@ -105,12 +106,19 @@ const renderApp = (element) => {
                 false
             )
 
+            renderPlayingField(
+                randomCards,
+                element
+            )
+
             initGame(
                 element,
                 randomCards,
                 globalState,
                 renderAppWindow
             )
+
+
         }
 
        setTimeout(
@@ -136,10 +144,13 @@ const renderApp = (element) => {
         console.log(globalState)
 
     } else if (globalState.status === "Результат") {
+        document.getElementById("header-box").classList.add("invisible");
         stopTimer(timerSekId, timerMinId);
         console.log(timerSekId)
         console.log(timerMinId)
         globalState.time = timerMinId + '.' + timerSekId
+        console.log(globalState)
+
         const renderFinish = () => {
         const finishHtml = `<div class="finish">
         <div class="finish-box container">

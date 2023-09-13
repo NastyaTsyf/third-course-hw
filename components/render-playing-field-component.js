@@ -43,57 +43,65 @@ export function renderPlayingFieldStart (array, element, state) {
 let flippedСards = [];
 
 export function initGame (element, array, globalState, renderAppWindow)  {
-    renderPlayingField (array, element)
+    if (globalState.status === "Результат") {
+        return
+        
+    } else {
+    
+        renderPlayingField (array, element)
 
+        const cardElements = document.querySelectorAll(".card")
+            for (const cardElement of cardElements){        
+                cardElement.addEventListener('click', () => {
+                    const index = cardElement.dataset.index;
+                    const flipTheCard = () => {
+                        
+                        array[index].isClicked = true
+                        const CompareACoupleOfCards = () => {
 
-    const cardElements = document.querySelectorAll(".card")
-        for (const cardElement of cardElements){        
-            cardElement.addEventListener('click', () => {
-                const index = cardElement.dataset.index;
-                const flipTheCard = () => {
-                    array[index].isClicked = true
-                    const CompareACoupleOfCards = () => {
-
-                        if (
-                            globalState.selectedCards.length <
-                           (globalState.generatedCards.length - 1)
-                        ) {
-                            if (flippedСards.length <= 1) {
-                            flippedСards.push(array[index].name);
-                            console.log(flippedСards)
-                            globalState.selectedCards.push(array[index].name)
-                            
-                            
-                            if ((flippedСards.length === 2 && flippedСards[0] !== flippedСards[1])) {
-                                Object.defineProperty(globalState, "status", {value : "Результат"})
-                                Object.defineProperty(globalState, "result", {value : "loss"})
+                            if (
+                                globalState.selectedCards.length <
+                            (globalState.generatedCards.length - 1)
+                            ) {
+                                if (flippedСards.length <= 1) {
+                                flippedСards.push(array[index].name);
+                                console.log(flippedСards)
+                                globalState.selectedCards.push(array[index].name)
                                 
-                                alert("Вы проиграли")
+                                
+                                if ((flippedСards.length === 2 && flippedСards[0] !== flippedСards[1])) {
+                                    Object.defineProperty(globalState, "status", {value : "Результат"})
+                                    Object.defineProperty(globalState, "result", {value : "loss"})
+                                    //alert("Вы проиграли")
+                                    console.log(globalState)
+                                    renderAppWindow()
+                                    return
+                                    
+                                }
+                            }  else {
+                                flippedСards = []
+                                CompareACoupleOfCards ()
+                            }
+                                
+                            } else {
+                                Object.defineProperty(globalState, "status", {value : "Результат"})
+                                Object.defineProperty(globalState, "result", {value : "win"})
+                                //alert("Вы выиграли")
                                 console.log(globalState)
                                 renderAppWindow()
-                                
                             }
-                        }  else {
-                            flippedСards = []
-                            CompareACoupleOfCards ()
+                        
                         }
-                            
-                        } else {
-                            Object.defineProperty(globalState, "status", {value : "Результат"})
-                            Object.defineProperty(globalState, "result", {value : "win"})
-                            alert("Вы выиграли")
-                            console.log(globalState)
-                            return
-                        }
-                    
-                    }
-                    CompareACoupleOfCards ()
+                        CompareACoupleOfCards ()
+                        
 
-                 initGame (element, array, globalState, renderAppWindow)
-                }
-                flipTheCard()
-            })
+                    initGame (element, array, globalState, renderAppWindow)
+                    }
+                    flipTheCard()
+                    
+                })
         }
+    }
 
     
 }
