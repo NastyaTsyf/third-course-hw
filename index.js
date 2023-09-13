@@ -80,7 +80,7 @@ const renderApp = (element) => {
             <p class="unit-item">sek</p>
         </div>
         <div class="time-box">
-            <input class="time" value="00" id="timer-min-element"></input>
+            <input class="time" value="0" id="timer-min-element"></input>
             <p class="time">.</p>
             <input class="time" value="00" id="timer-sek-element"></input>
         </div>
@@ -146,9 +146,16 @@ const renderApp = (element) => {
     } else if (globalState.status === "Результат") {
         document.getElementById("header-box").classList.add("invisible");
         stopTimer(timerSekId, timerMinId);
-        console.log(timerSekId)
-        console.log(timerMinId)
-        globalState.time = timerMinId + '.' + timerSekId
+        if (document.getElementById("timer-sek-element").value < 10 && document.getElementById("timer-min-element").value < 10) {
+            Object.defineProperty(globalState, "time", {value : `0${document.getElementById("timer-min-element").value}.0${document.getElementById("timer-sek-element").value}`})
+        } else if (document.getElementById("timer-sek-element").value > 9 && document.getElementById("timer-min-element").value < 10) {
+            Object.defineProperty(globalState, "time", {value : `0${document.getElementById("timer-min-element").value}.${document.getElementById("timer-sek-element").value}`})
+        } else if (document.getElementById("timer-sek-element").value < 10 && document.getElementById("timer-min-element").value > 9) {
+            Object.defineProperty(globalState, "time", {value : `${document.getElementById("timer-min-element").value}.0${document.getElementById("timer-sek-element").value}`})
+        } else {
+            Object.defineProperty(globalState, "time", {value : `${document.getElementById("timer-min-element").value}.${document.getElementById("timer-sek-element").value}`})
+        }
+
         console.log(globalState)
 
         const renderFinish = () => {
