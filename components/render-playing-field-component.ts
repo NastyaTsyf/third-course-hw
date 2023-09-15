@@ -1,5 +1,15 @@
+import { Cards } from "./get-random-cards-component";
 
-export function renderPlayingField (array, element) {
+export type GlobalState = {
+    complexity: number;
+    status: string;
+    generatedCards: Cards;
+    selectedCards: Array<string>;
+    result: string;
+    time: string;
+}
+
+export function renderPlayingField (array: Cards, element: HTMLElement | null) {
     const cardsHtml = array.map((card, index) =>{
         
         return`
@@ -28,32 +38,39 @@ export function renderPlayingField (array, element) {
     <div class="playing-field">
     ${cardsHtml}
     </div>`
-    element.innerHTML = playingFieldHtml
+    if (element) {
+        element.innerHTML = playingFieldHtml
+    }
+
 }
 
-export function renderPlayingFieldStart (array, element, state) {
+export function renderPlayingFieldStart (array: Cards, element: HTMLElement | null, state: boolean) {
     renderPlayingField (array, element)
     const cardElements = document.querySelectorAll(".card")
-    for (const cardElement of cardElements){
-        const index = cardElement.dataset.index;
-        array[index].isClicked = state}
+    const cardElementArray = Array.from(cardElements)
+    for (const cardElement of cardElementArray){
+        const index = Number((cardElement as HTMLElement).dataset.index);
+        if (cardElement) {
+            array[index].isClicked = state
+        }}
     renderPlayingField (array, element)
 }    
 
-let flippedСards = [];
+let flippedСards: Array<string> = [];
 
-export function initGame (element, array, globalState, renderAppWindow)  {
+export function initGame (element: HTMLElement | null, array: Cards, globalState: GlobalState, renderAppWindow: () => void)  {
     if (globalState.status === "Результат") {
         return
         
     } else {
-    
+
         renderPlayingField (array, element)
 
         const cardElements = document.querySelectorAll(".card")
-            for (const cardElement of cardElements){        
+        const cardElementArray = Array.from(cardElements)
+            for (const cardElement of cardElementArray){        
                 cardElement.addEventListener('click', () => {
-                    const index = cardElement.dataset.index;
+                    const index = Number((cardElement as HTMLElement).dataset.index);
                     const flipTheCard = () => {
                         
                         array[index].isClicked = true

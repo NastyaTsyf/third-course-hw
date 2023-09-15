@@ -25,6 +25,8 @@ const suitSigns = {
     </svg>`
 }
 
+
+
 export const cards = [
     {
         name: 'Туз пик',
