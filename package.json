@@ -2,21 +2,23 @@
   "name": "third-course-hw",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier —write .",
     "lint:js": "eslint *.js",
     "lint:css": "stylelint *.css",
     "prepare": "husky install",
-    "lint": "npm run lint:js && npm run lint:css",
+    "lint": "npm run lint:ts && npm run lint:css",
     "dev": "webpack --mode development --watch",
     "build": "NODE_ENV=production webpack",
-    "start": "webpack-dev-server --open"
+    "start": "webpack-dev-server --open",
+    "lint:ts": "tsc --noEmit"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/lodash": "^4.14.198",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.8.1",
     "css-minimizer-webpack-plugin": "^5.0.1",
@@ -31,11 +33,14 @@
     "stylelint": "^15.10.2",
     "stylelint-config-standard": "^34.0.0",
     "stylelint-prettier": "^4.0.2",
+    "ts-loader": "^9.4.4",
+    "typescript": "^5.2.2",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
+    "date-fns": "^2.30.0",
     "lodash": "^4.17.21"
   }
 }

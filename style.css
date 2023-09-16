@@ -125,6 +125,10 @@ a {
     line-height: 32px;
 }
 
+.time-box{
+    display: flex;
+}
+
 .time {
     color: #FFF;
     font-size: 64px;
@@ -133,6 +137,7 @@ a {
     line-height: 72px;
     background: transparent;
     border: none;
+    max-width: 77px;
 }
 
 .playing-field {
@@ -197,6 +202,41 @@ a {
 
 .footer-rank {
     transform: rotate(180deg);
+}
+
+.finish {
+    opacity: 0.9;
+    background: #004980;
+}
+
+.finish-box{
+    padding: 26px 112px 50px;
+}
+
+.finish-header{
+    color: var(--blue-120, #004980);
+    font-variant-numeric: lining-nums proportional-nums;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 48px;
+    padding: 9px 28px;
+}
+
+.time-text{
+    color: #000;
+    font-variant-numeric: lining-nums proportional-nums;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px;
+}
+
+.finish-time{
+    color: #000;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 40px;
 }
 
 
