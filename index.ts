@@ -1,18 +1,20 @@
 import "/style.css"
-import { cards } from "./components/cards-component.js"
-import { getRandomCards } from "./components/get-random-cards-component.js"
+import { cards } from "./components/cards-component"
+import { getRandomCards } from "./components/get-random-cards-component"
 import {
     renderPlayingField,
     renderPlayingFieldStart,
     GlobalState,
-} from "./components/render-playing-field-component.js"
-import { initGame } from "./components/render-playing-field-component.js"
-import { stopTimer, timer } from "./components/timer-component.js"
+} from "./components/render-playing-field-component"
+import { initGame } from "./components/render-playing-field-component"
+import { renderTimeNumber, stopTimer } from "./components/timer-component"
 
 const appElement = document.getElementById("app")
 const appHeaderElement = document.getElementById("header-box")
 let timerSekId = 1
 let timerMinId = 1
+let minCounter = 0
+let sekCounter = 0
 
 let globalState: GlobalState = {
     complexity: 0,
@@ -20,7 +22,7 @@ let globalState: GlobalState = {
     generatedCards: [],
     selectedCards: [],
     result: "",
-    time: "",
+    time: "00.00",
 }
 
 const renderApp = (element: HTMLElement | null) => {
@@ -34,6 +36,7 @@ const renderApp = (element: HTMLElement | null) => {
     ) as HTMLInputElement | null
 
     const renderAppWindow = () => {
+
         if (globalState.status === "Выбор сложности") {
             const chooseFormHtml = `
         <div class="header invisible" id="header-box">
@@ -107,29 +110,78 @@ const renderApp = (element: HTMLElement | null) => {
             }
 
             Object.defineProperty(globalState, "selectedCards", { value: [] })
-            Object.defineProperty(globalState, "time", { value: "" })
+            Object.defineProperty(globalState, "time", { value: "00.00" })
             Object.defineProperty(globalState, "result", { value: "" })
             timerSekId = 1
             timerMinId = 1
+            minCounter = 0
+            sekCounter = 0
         } else if (globalState.status === "Игра") {
+
+
             const renderHeader = () => {
+
                 const timerHtml = `<div class="timer">
-        <div class="units">
-            <p class="unit-item">min</p>
-            <p class="unit-item">sek</p>
-        </div>
-        <div class="time-box">
-            <input class="time" type="number" value="0" id="timer-min-element"></input>
-            <p class="time">.</p>
-            <input class="time" type="number" value="0" id="timer-sek-element"></input>
-        </div>
-        </div>
-        <button class="button" id="again-button">Начать заново</button>`
+                <div class="units">
+                    <p class="unit-item">min</p>
+                    <p class="unit-item">sek</p>
+                </div>
+                <div class="time-box">
+                    <p class="time" id="timer-min-element">${renderTimeNumber(minCounter)}</p>
+                    <p class="time">.</p>
+                    <p class="time" id="timer-sek-element">${renderTimeNumber(sekCounter)}</p>
+                </div>
+                </div>
+                <button class="button" id="again-button">Начать заново</button>`
                 if (appHeaderElement) {
                     appHeaderElement.innerHTML = timerHtml
                 }
+                 const initAgainButton = () => {
+                    const againButton = document.getElementById("again-button")
+                    if (againButton) {
+                        againButton.addEventListener("click", () => {
+                            Object.defineProperty(globalState, "status", {
+                                value: "Игра",
+                            })
+                            renderPlayingFieldStart(randomCards, element, true)
+                            setTimeout(startGame, 5000)
+                        })
+                        }
+                    }
+                    
+                initAgainButton()
             }
+
+           
             renderHeader()
+
+            setTimeout(() => {
+                timerSekId = window.setInterval(() => {         
+                    if (sekCounter <= 59) {
+                        sekCounter = sekCounter + 1
+                        renderHeader()
+                    console.log(sekCounter)
+                } else {
+                    sekCounter = 0
+                    sekCounter = sekCounter + 1
+                    renderHeader()
+                    console.log(sekCounter)
+                }}, 1000, sekCounter)
+            
+                timerMinId = window.setInterval(() => {         
+                    if (minCounter <= 59) {
+                        minCounter = minCounter + 1
+                        renderHeader()
+                    console.log(minCounter)
+                } else {
+                    minCounter = 0
+                    minCounter = minCounter + 1
+                    renderHeader()
+                    console.log(minCounter)
+                }}, 60000, minCounter)    
+            }, 5000)
+
+        
 
             if (appHeaderElement) {
                 appHeaderElement.classList.remove("invisible")
@@ -137,10 +189,6 @@ const renderApp = (element: HTMLElement | null) => {
 
             renderPlayingFieldStart(randomCards, element, true)
 
-            const startTimer = () => {
-                timerSekId = <any>setInterval(timer, 1000, timerSekElement)
-                timerMinId = <any>setInterval(timer, 60000, timerMinElement)
-            }
             const startGame = () => {
                 renderPlayingFieldStart(randomCards, element, false)
 
@@ -151,18 +199,7 @@ const renderApp = (element: HTMLElement | null) => {
 
             setTimeout(startGame, 5000)
 
-            setTimeout(startTimer, 5000)
-
-            const againButton = document.getElementById("again-button")
-            if (againButton) {
-                againButton.addEventListener("click", () => {
-                    Object.defineProperty(globalState, "status", {
-                        value: "Игра",
-                    })
-                    renderPlayingFieldStart(randomCards, element, true)
-                    setTimeout(startGame, 5000)
-                })
-            }
+            //setTimeout(startTimer, 5000, timerSekId, timerMinId, sekCounter, minCounter, renderHeader)
 
             console.log(globalState)
         } else if (globalState.status === "Результат") {
@@ -171,38 +208,33 @@ const renderApp = (element: HTMLElement | null) => {
             }
             stopTimer(timerSekId, timerMinId)
 
-            if (timerSekElement) {
-                const timerSekElementNumber = Number(timerSekElement.value)
-                if (timerMinElement) {
-                    const timerMinElementNumber = Number(timerMinElement.value)
-                    if (
-                        timerSekElementNumber < 10 &&
-                        timerMinElementNumber < 10
-                    ) {
-                        Object.defineProperty(globalState, "time", {
-                            value: `0${timerMinElementNumber}.0${timerSekElementNumber}`,
-                        })
-                    } else if (
-                        timerSekElementNumber > 9 &&
-                        timerMinElementNumber < 10
-                    ) {
-                        Object.defineProperty(globalState, "time", {
-                            value: `0${timerMinElementNumber}.${timerSekElementNumber}`,
-                        })
-                    } else if (
-                        timerSekElementNumber < 10 &&
-                        timerMinElementNumber > 9
-                    ) {
-                        Object.defineProperty(globalState, "time", {
-                            value: `${timerMinElementNumber}.0${timerSekElementNumber}`,
-                        })
-                    } else {
-                        Object.defineProperty(globalState, "time", {
-                            value: `${timerMinElementNumber}.${timerSekElementNumber}`,
-                        })
-                    }
-                }
+            if (
+                sekCounter < 10 &&
+                minCounter < 10
+            ) {
+                Object.defineProperty(globalState, "time", {
+                    value: `0${minCounter}.0${sekCounter}`,
+                })
+            } else if (
+                sekCounter > 9 &&
+                minCounter < 10
+            ) {
+                Object.defineProperty(globalState, "time", {
+                    value: `0${minCounter}.${sekCounter}`,
+                })
+            } else if (
+                sekCounter < 10 &&
+                minCounter > 9
+            ) {
+                Object.defineProperty(globalState, "time", {
+                    value: `${minCounter}.0${sekCounter}`,
+                })
+            } else {
+                Object.defineProperty(globalState, "time", {
+                    value: `${minCounter}.${sekCounter}`,
+                })
             }
+
 
             console.log(globalState)
 

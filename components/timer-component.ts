@@ -1,19 +1,20 @@
-export function timer(element: HTMLInputElement | null) {
-    if (element) {
-        let elementValue = Number(element.value)
-        if (elementValue <= 59) {
-            elementValue = elementValue + 1
-            console.log(elementValue)
-        } else {
-            elementValue = 0
-            elementValue = elementValue + 1
-            console.log(elementValue)
-        }
-    }
-}
-
 
 export function stopTimer(timerSekId: number, timerMinId: number) {
     clearInterval(timerSekId)
     clearInterval(timerMinId)
 }
+
+export function renderTimeNumber (counter: number) {
+    if (counter < 10) {
+        return "0" + counter
+    } else if (counter >= 10) {
+        return String(counter)
+    } else if (counter === 60) {
+        return "00"
+    } else {
+        return "00"
+    }
+}
+
+
+

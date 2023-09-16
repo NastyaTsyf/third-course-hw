@@ -81,31 +81,32 @@ export function initGame (element: HTMLElement | null, array: Cards, globalState
                             (globalState.generatedCards.length - 1)
                             ) {
                                 if (flippedСards.length <= 1) {
-                                flippedСards.push(array[index].name);
-                                console.log(flippedСards)
-                                globalState.selectedCards.push(array[index].name)
-                                
-                                
-                                if ((flippedСards.length === 2 && flippedСards[0] !== flippedСards[1])) {
-                                    Object.defineProperty(globalState, "status", {value : "Результат"})
-                                    Object.defineProperty(globalState, "result", {value : "loss"})
-                                    //alert("Вы проиграли")
-                                    console.log(globalState)
-                                    renderAppWindow()
-                                    return
-                                    
+                                    flippedСards.push(array[index].name);
+                                    console.log(flippedСards)
+                                    globalState.selectedCards.push(array[index].name)
+                                    if ((flippedСards.length === 2 && flippedСards[0] !== flippedСards[1])) {
+                                        Object.defineProperty(globalState, "status", {value : "Результат"})
+                                        Object.defineProperty(globalState, "result", {value : "loss"})
+                                        //alert("Вы проиграли")
+                                        console.log(globalState)
+                                        renderAppWindow()
+                                        return
+                                        
+                                    }
+                                }  else {
+                                    flippedСards = []
+                                    CompareACoupleOfCards ()
                                 }
-                            }  else {
-                                flippedСards = []
-                                CompareACoupleOfCards ()
-                            }
                                 
-                            } else {
+                            } else if (globalState.selectedCards.length ===
+                                (globalState.generatedCards.length - 1)) {
+                                flippedСards = []
                                 Object.defineProperty(globalState, "status", {value : "Результат"})
                                 Object.defineProperty(globalState, "result", {value : "win"})
                                 //alert("Вы выиграли")
                                 console.log(globalState)
                                 renderAppWindow()
+                                return
                             }
                         
                         }
@@ -122,6 +123,7 @@ export function initGame (element: HTMLElement | null, array: Cards, globalState
 
     
 }
+
 
 
 
